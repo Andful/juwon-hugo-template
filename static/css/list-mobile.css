@@ -1,0 +1,95 @@
+@media screen and (max-width: 700px) {
+  .menu-type {
+    font-size: 4.3vw;
+  }
+
+  .about-1 {
+    width: 100%;
+    height: 20%;
+    top: 0%;
+    left: -160%;
+    border-bottom: 1px solid #000;
+  }
+  .about-1.open {
+    width: 100%;
+    height: 20%;
+    top: 0%;
+    left: 0%;
+    border-bottom: 1px solid #000;
+  }
+
+  .about-2 {
+    width: calc(100% + 1px);
+    height: 40%;
+    top: 20%;
+    left: 160%;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+  .about-2.open {
+    width: calc(100% + 1px);
+    height: 40%;
+    top: 20%;
+    left: calc(0% - 1px);
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .about-2-1 {
+    width: 50%;
+    height: 100%;
+  }
+
+  .about-2-2 {
+    width: 50%;
+    height: 100%;
+    left: 50%;
+  }
+
+  .about-3 {
+    width: 50%;
+    height: 30%;
+    top: 160;
+    left: 0%;
+    border-top: 1px solid #000;
+    border-left: 0px solid #000;
+    border-right: 1px solid #000;
+  }
+  .about-3.open {
+    width: 50%;
+    height: 30%;
+    top: calc(60% + 1px);
+    left: 0%;
+    border-top: 1px solid #000;
+    border-left: 0px solid #000;
+    border-right: 1px solid #000;
+  }
+
+  .about-4 {
+    width: 50%;
+    height: 30%;
+    top: 60%;
+    left: 160%;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    transition: 1s;
+  }
+  .about-4.open {
+    width: 50%;
+    height: 30%;
+    top: calc(60% + 1px);
+    left: 50%;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+  }
+
+  .about-b-type {
+    font-size: 4.4vw;
+  }
+
+  .about-s-type {
+    font-size: 3vw;
+  }
+}

@@ -1,0 +1,119 @@
+{{ define "main" }}
+
+{{ $pages := .Site.Home.Pages.ByPublishDate }}
+{{ $currentIndex := -1 }}
+
+{{ $this := .}}
+{{ $value := 0 }}
+{{ range $index, $element := $pages}}
+    {{ if ( eq $this $element) }}
+        {{ $currentIndex = $index }}
+    {{ end }}
+{{ end }}
+
+{{ $next := ( add $currentIndex 1) }}
+{{ if ( ge $next ( len $pages)) }}
+    {{ $next = 0}}
+{{ end }}
+
+{{ $prev := ( sub $currentIndex 1) }}
+{{ if ( lt $prev 0 ) }}
+    {{ $prev = ( sub ( len $pages ) 1 ) }}
+{{ end }}
+
+<main class="container">
+  <div class="sub b-font">
+    <div class="sub-txt">{{ .Title }}</div>
+  </div>
+
+  <div class="etc">
+    <div class="button">
+        <a href="{{ ( index $pages $prev ).Permalink }}">
+            <div class="back cursor">
+            <img class="back-img" src="/svg/back.svg" />
+            </div>
+        </a>
+      
+
+      <div class="next cursor">
+        <a href="{{ ( index $pages $next ).Permalink }}">
+          <img class="next-img" src="/svg/next.svg" />
+        </a>
+      </div>
+    </div>
+
+    <div class="explain s-font">
+      <div class="explain-txt">{{ .Content }}</div>
+    </div>
+
+    <div class="caption s-font">
+      <div class="caption-txt">
+        <ul>
+          {{ range .Params.tags}}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="image">
+    <div class="prev" onclick="plusSlides(-1)">
+      <div class="prev-txt">&larr;</div>
+    </div>
+    {{ range .Params.images}}
+    <img
+      class="contents"
+      src="{{ print $this.Site.BaseURL . }}"
+      style="
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      "
+    />
+    {{ end }}
+    <div class="next-1" onclick="plusSlides(1)">
+      <div class="next-1-txt">&rarr;</div>
+    </div>
+  </div>
+
+  <div class="bottom-button">
+    <div class="bottom-button-txt menu-type cursor">
+      <a href="/"> Home </a>
+    </div>
+  </div>
+</main>
+
+<script type="text/javascript">
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides((slideIndex += n));
+  }
+
+  function currentSlide(n) {
+    showSlides((slideIndex = n));
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("contents");
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
+
+  $(".contents").click(function () {
+    $(".image").toggleClass("open");
+  });
+</script>
+{{ end }}

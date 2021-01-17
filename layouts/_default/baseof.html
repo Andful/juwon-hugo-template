@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ $title := print .Title " • " .Site.Title }}
+    {{ if .IsHome }}
+        {{ $title = .Site.Title }} 
+    {{ end }}
+    <title>{{ $title }}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    {{ if .IsHome }}
+        <link rel="stylesheet" type="text/css" href="{{ print .Site.BaseURL "/css/list-main.css" }}" />
+        <link rel="stylesheet" type="text/css" href="{{ print .Site.BaseURL "/css/list-mobile.css" }}" />
+    {{ else }}
+        <link rel="stylesheet" type="text/css" href="{{ print .Site.BaseURL "/css/single-main.css" }}" />
+        <link rel="stylesheet" type="text/css" href="{{ print .Site.BaseURL "/css/single-mobile.css" }}" />
+    {{ end }}
+  </head>
+  <body>
+    {{ block "main" . }}
+    {{ end }}
+  </body>
+</html>

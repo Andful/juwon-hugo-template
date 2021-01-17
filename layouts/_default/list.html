@@ -1,0 +1,208 @@
+{{ define "main" }}
+<div class="sketch">
+  <div class="sketch-txt about-b-type cursor">Drawing Board</div>
+</div>
+
+<canvas id="myCanvas">
+  Sorry, your browser does not support HTML5 canvas technology.
+</canvas>
+
+<div class="bottom-menu">
+  <div class="menu-about">
+    <div class="about menu-type cursor">About</div>
+  </div>
+
+  <div class="menu-home">
+    <div class="home menu-type cursor">
+      <a href="{{ .Site.BaseURL }}" style="color: black"> Juwon Lee </a>
+    </div>
+    <div class="close menu-type cursor">Close</div>
+    <div class="close-2 menu-type cursor">Close</div>
+  </div>
+
+  <div class="menu-project">
+    <div class="project menu-type cursor">Project</div>
+  </div>
+</div>
+
+<div class="about-container">
+  <div class="about-1">
+    <div class="about-b-txt about-b-type">
+      Juwon Lee (Seoul, South Korea, 1992) lives and works in The Hague, the
+      Netherlands. She studied at Kaywon School of Art and Design in South
+      Korea, and currently studying at Royal Academy of Art, The Hague, in the
+      Netherlands.
+    </div>
+  </div>
+
+  <div class="about-2">
+    <div class="about-2-1">
+      <div class="about-s-txt about-s-type">
+        <span class="uderline">Exhibitions</span>
+        <br />
+        <br />
+        <i>2014</i>
+        <br />
+        · Half moon Garden Project, Anyang Public Art Project, South Korea
+        <br />
+        · ‘Start : overlap’, arte22 gallery, Seoul, South Korea
+        <br />
+        <br />
+        <i>2015</i>
+        <br />
+        · The public art project of the Gunpo City Azalea Festival Lighting,
+        South Korea
+        <br />
+        <br />
+        <i>2018</i>
+        <br />
+        · ‘Love Story’ National Theatre, the Hague, the Netherlands
+      </div>
+    </div>
+
+    <div class="about-2-2">
+      <div class="about-s-txt about-s-type">
+        <br />
+        <br />
+        <i>2019</i>
+        <br />
+        · ‘Bonuskaart?’, Trixie, the Hague, the Netherlands
+        <br />
+        <br />
+        <i>2020</i> 
+        <br />
+        · Other Ways of Watching Together, MAMA, Rotterdam, Netherlands
+        <br />
+        · Exhibition Research Lab: As Real As You Want, Research Catalogue,
+        Online Exhibition
+        <br />
+        · Other Ways Of Watching Together by Neverland Cinema, Featured Artist
+        (Publications)
+      </div>
+    </div>
+  </div>
+
+  <div class="about-3">
+    <div class="about-s-txt about-s-type">
+      <span class="uderline">Contact</span>
+      <br />
+      <br />
+      <a href="mailto:ejuwon71@gmail.com">ejuwon71@gmail.com</a>
+      <br />
+      <br />
+      <span class="uderline">Instagram</span>
+      <br />
+      <br />
+      <a href="https://www.instagram.com/hi.juju/">@ hi_juju</a>
+    </div>
+  </div>
+
+  <div class="about-4">
+    <div class="about-s-txt about-s-type">
+      <span class="uderline">Education</span>
+      <br />
+      <br />
+      <i>2014 - 2016</i>
+      <br />
+      Diploma in Fine Art, Kaywon School of Art and Design, South Korea
+      <br />
+      <br />
+      <i>2017 - present</i>
+      <br />
+      Bachelor in Fine Art, Royal Academy of Art, The Hague, The Netheralnds
+    </div>
+  </div>
+</div>
+
+<div class="project-container">
+  {{ range .Pages }}
+    <a href="{{.Permalink}}">
+      <span class="sub">{{ .Title }}</span>
+      <span class="year">{{ .Date.Format "2006" }}</span>
+    </a>
+  {{ end }}
+  {{ range ( seq 1 ( sub 16 ( len .Pages ) ) ) }}
+    <div></div>
+  {{ end }}
+</div>
+
+<script
+  type="text/JavaScript"
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"
+></script>
+<script src="/js/script.js"></script>
+
+<script
+  type="text/javascript"
+  src="http://code.jquery.com/jquery-1.5.2.js"
+></script>
+<script type="text/javascript">
+  /* about click - about motion*/
+
+  $(".about, .close").click(function () {
+    $(".about-1, .about-2, .about-3, .about-4").toggleClass("open");
+  });
+
+  $(document).ready(function () {
+    $(".about").click(function () {
+      $(".about, .home, .project").hide(10);
+    });
+  });
+
+  $(document).ready(function () {
+    $(".close").click(function () {
+      $(".close").hide(10);
+    });
+  });
+
+  $(document).ready(function () {
+    $(".about").click(function () {
+      $(".close").show(10);
+    });
+  });
+
+  $(document).ready(function () {
+    $(".close").click(function () {
+      $(".about, .home, .project").show(10);
+    });
+  });
+
+  /* project click - about motion*/
+
+  $(".project, .close-2").click(function () {
+    $(".project-container").toggleClass("open");
+  });
+
+  $(document).ready(function () {
+    $(".project").click(function () {
+      $(".about, .home, .project").hide(10);
+    });
+  });
+
+  $(document).ready(function () {
+    $(".close-2").click(function () {
+      $(".close-2").hide(10);
+    });
+  });
+
+  $(document).ready(function () {
+    $(".project").click(function () {
+      $(".close-2").show(10);
+    });
+  });
+
+  $(document).ready(function () {
+    $(".close-2").click(function () {
+      $(".about, .home, .project").show(10);
+    });
+  });
+
+  /*sketch*/
+
+  $(document).ready(function () {
+    $(".sketch").click(function () {
+      $(".sketch").hide(10);
+    });
+  });
+</script>
+{{ end }}
